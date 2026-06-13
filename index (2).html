@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MAMÁ SAN — Flujo de bienvenida (8 emails)</title>
+  <style>
+    :root{--magenta:#EC1E79;--purple:#6B2C91;--ink:#2D0B4A;--ink-2:#4A3F55;--ink-3:#786B85;--cream:#FAF7FB;--stroke:#ECE4F0;}
+    *{box-sizing:border-box;}html,body{margin:0;padding:0;}
+    body{font-family:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;background:#F1ECF5;color:#1A1320;min-height:100vh;}
+    .wrap{max-width:1180px;margin:0 auto;padding:48px 28px 80px;}
+    .top{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:32px;}
+    .brand{display:flex;align-items:center;gap:14px;}
+    .brand img{height:46px;width:auto;}
+    .brand .name{font-size:12px;font-weight:800;letter-spacing:0.16em;color:var(--magenta);text-transform:uppercase;}
+    .brand .title{font-size:22px;font-weight:800;letter-spacing:-0.02em;margin-top:3px;}
+    .meta{display:flex;gap:8px;flex-wrap:wrap;}
+    .chip{background:#fff;border:1px solid var(--stroke);border-radius:999px;padding:7px 13px;font-size:12px;font-weight:700;color:var(--ink-2);}
+    .intro{background:#fff;border:1px solid var(--stroke);border-radius:16px;padding:22px 26px;margin:0 0 40px;}
+    .intro p{margin:0;font-size:14px;line-height:1.65;color:var(--ink-2);}
+    .intro strong{color:#1A1320;}
+    .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:26px;margin-bottom:34px;}
+    @media(max-width:920px){.grid{grid-template-columns:1fr;}}
+    .card{background:#fff;border:1px solid var(--stroke);border-radius:18px;overflow:hidden;display:flex;flex-direction:column;transition:box-shadow 0.2s;}
+    .card:hover{box-shadow:0 12px 32px -8px rgba(236,30,121,0.16);}
+    .card-frame{background:var(--cream);padding:12px;border-bottom:1px solid var(--stroke);height:340px;overflow:hidden;}
+    .card-frame iframe{width:100%;height:100%;border:none;border-radius:8px;background:#fff;display:block;}
+    .card-body{padding:20px 22px 22px;flex:1;display:flex;flex-direction:column;}
+    .card-tag{font-size:10px;font-weight:800;letter-spacing:0.16em;text-transform:uppercase;color:var(--magenta);margin-bottom:6px;}
+    .card-title{font-size:16px;font-weight:800;letter-spacing:-0.015em;margin:0 0 6px;}
+    .card-desc{font-size:12px;line-height:1.55;color:var(--ink-3);margin:0 0 16px;flex:1;}
+    .actions{display:flex;gap:8px;}
+    .btn{flex:1;padding:11px 14px;border-radius:10px;font-size:13px;font-weight:700;text-decoration:none;text-align:center;}
+    .btn-primary{background:var(--magenta);color:#fff;}
+    .btn-primary:hover{background:#FF1493;}
+    .btn-ghost{background:var(--cream);color:var(--purple);border:1px solid var(--stroke);}
+    .btn-ghost:hover{background:#F5F0F8;}
+    .structure{background:#fff;border-radius:16px;border:1px solid var(--stroke);padding:28px 32px;margin:0 0 40px;}
+    .structure h3{font-size:16px;font-weight:800;margin:0 0 16px;color:#1A1320;}
+    .tree{font-size:13px;line-height:2;color:var(--ink-2);font-family:'Courier New',monospace;overflow-x:auto;}
+    .tree strong{color:#1A1320;font-weight:700;}
+    .notes{background:var(--ink);color:rgba(255,255,255,0.82);border-radius:18px;padding:30px 34px;}
+    .notes h3{color:#fff;font-size:18px;font-weight:800;margin:0 0 14px;}
+    .notes ul{margin:0;padding-left:18px;font-size:13px;line-height:1.85;color:rgba(255,255,255,0.78);}
+    .notes code{background:rgba(255,255,255,0.1);padding:2px 8px;border-radius:4px;font-size:12px;}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="top">
+      <div class="brand">
+        <img src="assets/mamasan-logo-icon.png" alt="MAMÁ SAN" />
+        <div>
+          <div class="name">MAMÁ SAN · Email Marketing</div>
+          <div class="title">Flujo de bienvenida — 8 emails</div>
+        </div>
+      </div>
+      <div class="meta">
+        <span class="chip">Flujo completo</span>
+        <span class="chip">600px · HighLevel</span>
+        <span class="chip">System fonts · sólidos</span>
+      </div>
+    </div>
+
+    <div class="intro">
+      <p>
+        <strong>8 emails del flujo de bienvenida</strong> para usuarios que se registran sin completar datos. Cada email tiene un <strong>copy y diseño visual único</strong>, todos con <strong>tablas + inline styles</strong>, <strong>tipografía web-safe</strong> y <strong>colores sólidos</strong> (sin degradados). Todos tienen <strong>al menos 1 slot de imagen</strong> (borde punteado rosa) para que la diseñadora reemplace. Los contenidos usan dinámicas como {{contact.first_name}} y {{contact.limite_de_credito}}.
+      </p>
+    </div>
+
+    <div class="structure">
+      <h3>Estructura del flujo</h3>
+      <div class="tree">
+E1 (Entrada) "Falta un paso"<br/>
+├─ E2a "Qué puedes traer" (abrió E1)<br/>
+│  ├─ E3a "Cuánto pagas" (abrió E2a)<br/>
+│  └─ E3b "Lo que pierdes" (no abrió E2a)<br/>
+├─ E2b "Crédito bloqueado" (no abrió E1)<br/>
+│  ├─ E3c "Prueba social" (abrió E2b)<br/>
+│  └─ E3d "Antes/después" (no abrió E2b)<br/>
+└─ E4–E8 (Lineal)<br/>
+&nbsp;&nbsp;E4 "Métodos de pago"<br/>
+&nbsp;&nbsp;E5 "3 pasos"<br/>
+&nbsp;&nbsp;E6 "Sistema de niveles"<br/>
+&nbsp;&nbsp;E7 "Propuesta de valor"<br/>
+&nbsp;&nbsp;E8 "Cierre / retención"
+      </div>
+    </div>
+
+    <div style="margin-bottom:40px;">
+      <h2 style="font-size:18px;font-weight:800;margin:0 0 24px;color:#1A1320;">E1 — Entrada</h2>
+      <div class="grid">
+        <div class="card">
+          <div class="card-frame">
+            <iframe src="email-templates/E1-entrada.html" loading="lazy" title="E1"></iframe>
+          </div>
+          <div class="card-body">
+            <div class="card-tag">E1 · CHECKLIST + PROGRESO</div>
+            <h3 class="card-title">Falta un paso para activar tu crédito</h3>
+            <p class="card-desc">Barra de progreso (75%), checklist paso a paso (correo ✓, cédula, dirección). Directo, visual, motivador. CTA "Completar mis datos".</p>
+            <div class="actions">
+              <a class="btn btn-primary" href="email-templates/E1-entrada.html" target="_blank">Abrir →</a>
+              <a class="btn btn-ghost" href="email-templates/E1-entrada.html" download>↓ HTML</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-bottom:40px;">
+      <h2 style="font-size:18px;font-weight:800;margin:0 0 24px;color:#1A1320;">E2a & E3a/E3b — Rama "Sí abrió E1"</h2>
+      <div class="grid">
+        <div class="card">
+          <div class="card-frame">
+            <iframe src="email-templates/E2a-categorias.html" loading="lazy" title="E2a"></iframe>
+          </div>
+          <div class="card-body">
+            <div class="card-tag">E2a · GRID DE CATEGORÍAS</div>
+            <h3 class="card-title">¿Qué puedes traer con tu crédito?</h3>
+            <p class="card-desc">Grid de 6 emojis (audífonos, ropa, electrónica, hogar, cosméticos, accesorios). Inspirador y visible. CTA "Agrega al carrito ahora".</p>
+            <div class="actions">
+              <a class="btn btn-primary" href="email-templates/E2a-categorias.html" target="_blank">Abrir →</a>
+              <a class="btn btn-ghost" href="email-templates/E2a-categorias.html" download>↓ HTML</a>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-frame">
+            <iframe src="email-templates/E3a-precios.html" loading="lazy" title="E3a"></iframe>
+          </div>
+          <div class="card-body">
+            <div class="card-tag">E3a · TABLA DE PRECIOS</div>
+            <h3 class="card-title">¿Cuánto pago al inicio?</h3>
+            <p class="card-desc">Tabla transparente (precio total, pago inicial hoy, cuotas restantes). Tranquilidad y claridad. CTA "Agrega al carrito y verás los números".</p>
+            <div class="actions">
+              <a class="btn btn-primary" href="email-templates/E3a-precios.html" target="_blank">Abrir →</a>
+              <a class="btn btn-ghost" href="email-templates/E3a-precios.html" download>↓ HTML</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="grid">
+        <div class="card">
+          <div class="card-frame">
+            <iframe src="email-templates/E3b-fomo.html" loading="lazy" title="E3b"></iframe>
+          </div>
+          <div class="card-body">
+            <div class="card-tag">E3b · URGENCIA (FOMO)</div>
+            <h3 class="card-title">Lo que pierdes sin activar tu cuenta</h3>
+            <p class="card-desc">Urgencia: "otros ya compraron". Checkmarks de logros (audífono, outfit, accesorios). Psicología de FOMO. CTA "Agrega algo ahora".</p>
+            <div class="actions">
+              <a class="btn btn-primary" href="email-templates/E3b-fomo.html" target="_blank">Abrir →</a>
+              <a class="btn btn-ghost" href="email-templates/E3b-fomo.html" download>↓ HTML</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-bottom:40px;">
+      <h2 style="font-size:18px;font-weight:800;margin:0 0 24px;color:#1A1320;">E2b & E3c/E3d — Rama "No abrió E1"</h2>
+      <div class="grid">
+        <div class="card">
+          <div class="card-frame">
+            <iframe src="email-templates/E2b-bloqueado.html" loading="lazy" title="E2b"></iframe>
+          </div>
+          <div class="card-body">
+            <div class="card-tag">E2b · ALARMA VISUAL</div>
+            <h3 class="card-title">Tu crédito de ${{limite}} está bloqueado</h3>
+            <p class="card-desc">Numeral gigante, chip "⚠️ acción requerida", fondo alerta. Alto contraste. CTA "Desbloquear mi crédito".</p>
+            <div class="actions">
+              <a class="btn btn-primary" href="email-templates/E2b-bloqueado.html" target="_blank">Abrir →</a>
+              <a class="btn btn-ghost" href="email-templates/E2b-bloqueado.html" download>↓ HTML</a>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-frame">
+            <iframe src="email-templates/E3c-social.html" loading="lazy" title="E3c"></iframe>
+          </div>
+          <div class="card-body">
+            <div class="card-tag">E3c · PRUEBA SOCIAL</div>
+            <h3 class="card-title">Esto compraron usuarios como tú esta semana</h3>
+            <p class="card-desc">Lista con ratings (audífonos ⭐4.8, ropa ⭐4.9, etc.). Social proof + ratings. CTA "Empieza ahora".</p>
+            <div class="actions">
+              <a class="btn btn-primary" href="email-templates/E3c-social.html" target="_blank">Abrir →</a>
+              <a class="btn btn-ghost" href="email-templates/E3c-social.html" download>↓ HTML</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="grid">
+        <div class="card">
+          <div class="card-frame">
+            <iframe src="email-templates/E3d-educacion.html" loading="lazy" title="E3d"></iframe>
+          </div>
+          <div class="card-body">
+            <div class="card-tag">E3d · ANTES/DESPUÉS</div>
+            <h3 class="card-title">Comprar en Amazon desde Venezuela sin tarjeta</h3>
+            <p class="card-desc">2 columnas (❌ antes, ✓ ahora). Contraste visual claro. Mensaje: "La diferencia es ENORME". CTA "Agrega al carrito ahora".</p>
+            <div class="actions">
+              <a class="btn btn-primary" href="email-templates/E3d-educacion.html" target="_blank">Abrir →</a>
+              <a class="btn btn-ghost" href="email-templates/E3d-educacion.html" download>↓ HTML</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-bottom:40px;">
+      <h2 style="font-size:18px;font-weight:800;margin:0 0 24px;color:#1A1320;">E4–E8 — Flujo lineal</h2>
+      <div class="grid">
+        <div class="card">
+          <div class="card-frame">
+            <iframe src="email-templates/E4-pagos.html" loading="lazy" title="E4"></iframe>
+          </div>
+          <div class="card-body">
+            <div class="card-tag">E4 · MÉTODOS DE PAGO</div>
+            <h3 class="card-title">Pago Móvil, Zelle, Binance o transferencia</h3>
+            <p class="card-desc">4 chips con opciones (💳 Pago Móvil, 🏦 Zelle, ₿ Binance, 📤 Transferencia). Flexible y accesible. CTA "Agrega al carrito y elige tu método".</p>
+            <div class="actions">
+              <a class="btn btn-primary" href="email-templates/E4-pagos.html" target="_blank">Abrir →</a>
+              <a class="btn btn-ghost" href="email-templates/E4-pagos.html" download>↓ HTML</a>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-frame">
+            <iframe src="email-templates/E5-pasos.html" loading="lazy" title="E5"></iframe>
+          </div>
+          <div class="card-body">
+            <div class="card-tag">E5 · 3 PASOS NUMERADOS</div>
+            <h3 class="card-title">Así compran otros venezolanos sin tarjeta</h3>
+            <p class="card-desc">3 pasos con números de colores (1️⃣ Busca, 2️⃣ Agrega, 3️⃣ Continúa). Proceso claro y simple. CTA "Agrega al carrito y sigue".</p>
+            <div class="actions">
+              <a class="btn btn-primary" href="email-templates/E5-pasos.html" target="_blank">Abrir →</a>
+              <a class="btn btn-ghost" href="email-templates/E5-pasos.html" download>↓ HTML</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="grid">
+        <div class="card">
+          <div class="card-frame">
+            <iframe src="email-templates/E6-niveles.html" loading="lazy" title="E6"></iframe>
+          </div>
+          <div class="card-body">
+            <div class="card-tag">E6 · SISTEMA DE NIVELES</div>
+            <h3 class="card-title">Sin perfil completo tu crédito no existe</h3>
+            <p class="card-desc">4 cajas de niveles (🥉 Bronce $100, 🥈 Plata $300, 🥇 Oro $500, 💎 Platino $500+). Gamificación. CTA "Agrega al carrito".</p>
+            <div class="actions">
+              <a class="btn btn-primary" href="email-templates/E6-niveles.html" target="_blank">Abrir →</a>
+              <a class="btn btn-ghost" href="email-templates/E6-niveles.html" download>↓ HTML</a>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-frame">
+            <iframe src="email-templates/E7-valor.html" loading="lazy" title="E7"></iframe>
+          </div>
+          <div class="card-body">
+            <div class="card-tag">E7 · PROPUESTA DE VALOR</div>
+            <h3 class="card-title">Pagas en cuotas y bolívares — sin tarjeta</h3>
+            <p class="card-desc">2 columnas (❌ antes, ✓ ahora) con detalles. Cierre del argumento. Mensaje final: "La diferencia es ENORME". CTA "Agrega al carrito ahora".</p>
+            <div class="actions">
+              <a class="btn btn-primary" href="email-templates/E7-valor.html" target="_blank">Abrir →</a>
+              <a class="btn btn-ghost" href="email-templates/E7-valor.html" download>↓ HTML</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="grid">
+        <div class="card">
+          <div class="card-frame">
+            <iframe src="email-templates/E8-cierre.html" loading="lazy" title="E8"></iframe>
+          </div>
+          <div class="card-body">
+            <div class="card-tag">E8 · CIERRE / RETENCIÓN</div>
+            <h3 class="card-title">Tu crédito sigue esperándote</h3>
+            <p class="card-desc">Fondo oscuro (púrpura), tono cálido y paciente. "Si no es ahora, MamaSan sigue aquí". Mensaje emocional. CTA "Agrega al carrito".</p>
+            <div class="actions">
+              <a class="btn btn-primary" href="email-templates/E8-cierre.html" target="_blank">Abrir →</a>
+              <a class="btn btn-ghost" href="email-templates/E8-cierre.html" download>↓ HTML</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="notes">
+      <h3>Notas de uso</h3>
+      <ul>
+        <li>Cada email está en su propio archivo HTML, listo para copiar/pegar en <strong>HighLevel</strong>.</li>
+        <li>Todos usan <strong>tablas + estilos inline</strong> para máxima compatibilidad (Gmail, Outlook, Apple Mail, etc.).</li>
+        <li>Tipografía: <strong>system font stack web-safe</strong> (sin Google Fonts) — se ve correctamente en todos lados.</li>
+        <li><strong>Colores sólidos</strong> (sin degradados) — el texto se mantiene legible en modo oscuro.</li>
+        <li>Los <strong>slots de imagen</strong> (borde rosa punteado) con medidas exactas en px — reemplaza el bloque por tu <code>&lt;img src="..." width="600" height="200" ...&gt;</code>.</li>
+        <li>Dinámicas: <code>{{contact.first_name}}</code> y <code>{{contact.limite_de_credito}}</code> — HighLevel las reemplaza automáticamente.</li>
+        <li><strong>Logo + íconos de redes</strong> usan URLs hospedadas (HighLevel CDN) — funcionan al instante.</li>
+        <li><strong>CTAs</strong> apuntan a <code>https://mamasan.app</code> — cambiar si tu flujo tiene URLs distintas.</li>
+        <li>Cada email es <strong>independiente</strong> — puedes usarlos en cualquier orden o combinación dentro de tu flujo en HighLevel.</li>
+      </ul>
+    </div>
+  </div>
+</body>
+</html>
