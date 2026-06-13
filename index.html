@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MamaSan WF-01A — Galería de Emails</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: linear-gradient(135deg, #2D0B4A 0%, #1A1320 100%);
+      min-height: 100vh;
+      padding: 40px 20px;
+      color: #1A1320;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    header {
+      text-align: center;
+      margin-bottom: 50px;
+      color: #ffffff;
+    }
+    
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 900;
+      margin-bottom: 12px;
+      letter-spacing: -0.02em;
+    }
+    
+    .subtitle {
+      font-size: 1.1rem;
+      opacity: 0.85;
+      margin-bottom: 24px;
+      font-weight: 500;
+    }
+    
+    .info-box {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 30px;
+      color: #ffffff;
+      backdrop-filter: blur(10px);
+    }
+    
+    .info-box strong {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      opacity: 0.8;
+    }
+    
+    .info-content {
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+    
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      margin-bottom: 40px;
+    }
+    
+    .email-card {
+      background: #ffffff;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+    
+    .email-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 50px rgba(236, 30, 121, 0.3);
+    }
+    
+    .email-card-header {
+      background: linear-gradient(135deg, #EC1E79 0%, #C8146A 100%);
+      color: #ffffff;
+      padding: 20px;
+      text-align: center;
+    }
+    
+    .email-card-header.e2b,
+    .email-card-header.e3b,
+    .email-card-header.e3d {
+      background: linear-gradient(135deg, #6B2C91 0%, #4A148C 100%);
+    }
+    
+    .email-number {
+      font-size: 0.85rem;
+      font-weight: 800;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      opacity: 0.9;
+      margin-bottom: 8px;
+    }
+    
+    .email-title {
+      font-size: 1.2rem;
+      font-weight: 800;
+      line-height: 1.2;
+    }
+    
+    .email-card-body {
+      padding: 20px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .email-subjects {
+      margin-bottom: 16px;
+    }
+    
+    .subject-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #EC1E79;
+      margin-bottom: 4px;
+      display: block;
+    }
+    
+    .subject-text {
+      font-size: 0.9rem;
+      color: #1A1320;
+      line-height: 1.4;
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
+    
+    .subject-text.alt {
+      opacity: 0.7;
+      font-weight: 500;
+    }
+    
+    .email-description {
+      font-size: 0.85rem;
+      color: #786B85;
+      line-height: 1.5;
+      margin-bottom: 16px;
+      flex-grow: 1;
+    }
+    
+    .email-meta {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 16px;
+    }
+    
+    .tag {
+      font-size: 0.75rem;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-weight: 600;
+      background: #F5F0F8;
+      color: #4A3F55;
+    }
+    
+    .tag.bifurcation {
+      background: #FFE9F3;
+      color: #EC1E79;
+    }
+    
+    .email-card-footer {
+      padding: 0 20px 20px;
+      display: flex;
+      gap: 10px;
+    }
+    
+    .btn {
+      flex: 1;
+      padding: 12px 16px;
+      border: none;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+      text-align: center;
+      transition: all 0.2s ease;
+      display: inline-block;
+    }
+    
+    .btn-primary {
+      background: #EC1E79;
+      color: #ffffff;
+    }
+    
+    .btn-primary:hover {
+      background: #C8146A;
+    }
+    
+    .btn-secondary {
+      background: #F5F0F8;
+      color: #1A1320;
+      border: 1px solid #ECE4F0;
+    }
+    
+    .btn-secondary:hover {
+      background: #ECE4F0;
+    }
+    
+    .footer {
+      text-align: center;
+      color: #ffffff;
+      opacity: 0.7;
+      font-size: 0.9rem;
+      margin-top: 60px;
+      padding: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .structure-note {
+      background: rgba(236, 30, 121, 0.1);
+      border: 1px solid rgba(236, 30, 121, 0.3);
+      border-radius: 12px;
+      padding: 16px;
+      color: #ffffff;
+      margin-bottom: 30px;
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+    
+    .structure-note strong {
+      display: block;
+      margin-bottom: 8px;
+      color: #FF1493;
+    }
+    
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 1.8rem;
+      }
+      
+      .gallery {
+        grid-template-columns: 1fr;
+      }
+      
+      .email-card-footer {
+        flex-direction: column;
+      }
+      
+      .btn {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>🚀 MamaSan WF-01A</h1>
+      <p class="subtitle">Flujo de Bienvenida — Registro Incompleto</p>
+      <div class="info-box">
+        <strong>⏱️ 21 días · 8 emails · Bifurcación en E1 y E2</strong>
+        <div class="info-content">
+          Flujo diseñado para impulsar la activación de usuarios que iniciaron registro pero no completaron perfil. Incluye dos ramas principales según apertura de emails, convergiendo en secuencia lineal desde E4.
+        </div>
+      </div>
+    </header>
+
+    <div class="structure-note">
+      <strong>📋 Estructura del flujo:</strong>
+      E1 (entrada) → E2a/E2b (bifurcación por apertura) → E3a/E3b/E3c/E3d (según rama) → E4-E8 (lineal convergido)
+    </div>
+
+    <div class="gallery">
+      <!-- E1 -->
+      <div class="email-card">
+        <div class="email-card-header">
+          <div class="email-number">📧 Email 1</div>
+          <div class="email-title">Falta un paso</div>
+        </div>
+        <div class="email-card-body">
+          <div class="email-subjects">
+            <span class="subject-label">A:</span>
+            <div class="subject-text">Falta un paso para activar tu crédito</div>
+            <span class="subject-label">B:</span>
+            <div class="subject-text alt">{{first_name}}, tu cuenta está casi lista</div>
+          </div>
+          <div class="email-description">
+            Entrada al flujo. Activa la urgencia del paso pendiente. 30 minutos post-registro.
+          </div>
+          <div class="email-meta">
+            <span class="tag">Día 0</span>
+            <span class="tag">Trigger</span>
+          </div>
+        </div>
+        <div class="email-card-footer">
+          <a href="emails/E1-entrada.html" class="btn btn-primary" target="_blank">Ver email</a>
+        </div>
+      </div>
+
+      <!-- E2a -->
+      <div class="email-card">
+        <div class="email-card-header">
+          <div class="email-number">📧 Email 2a</div>
+          <div class="email-title">Qué puedes comprar</div>
+        </div>
+        <div class="email-card-body">
+          <div class="email-subjects">
+            <span class="subject-label">Asunto único:</span>
+            <div class="subject-text">¿Qué puedes traer con tu crédito desde Venezuela?</div>
+          </div>
+          <div class="email-description">
+            Rama: SÍ abrió E1. Muestra beneficio concreto. Enfoque: aspiración.
+          </div>
+          <div class="email-meta">
+            <span class="tag bifurcation">Bifurcación</span>
+            <span class="tag">Día 2</span>
+          </div>
+        </div>
+        <div class="email-card-footer">
+          <a href="emails/E2a-categorias.html" class="btn btn-primary" target="_blank">Ver email</a>
+        </div>
+      </div>
+
+      <!-- E2b -->
+      <div class="email-card">
+        <div class="email-card-header e2b">
+          <div class="email-number">📧 Email 2b</div>
+          <div class="email-title">Crédito bloqueado</div>
+        </div>
+        <div class="email-card-body">
+          <div class="email-subjects">
+            <span class="subject-label">Asunto único:</span>
+            <div class="subject-text">Tu crédito de ${{limite_credito}} está bloqueado</div>
+          </div>
+          <div class="email-description">
+            Rama: NO abrió E1. Golpe emocional. Enfoque: pérdida del acceso.
+          </div>
+          <div class="email-meta">
+            <span class="tag bifurcation">Bifurcación</span>
+            <span class="tag">Día 2</span>
+          </div>
+        </div>
+        <div class="email-card-footer">
+          <a href="emails/E2b-bloqueado.html" class="btn btn-primary" target="_blank">Ver email</a>
+        </div>
+      </div>
+
+      <!-- E3a -->
+      <div class="email-card">
+        <div class="email-card-header">
+          <div class="email-number">📧 Email 3a</div>
+          <div class="email-title">¿Cuánto pagas?</div>
+        </div>
+        <div class="email-card-body">
+          <div class="email-subjects">
+            <span class="subject-label">Asunto único:</span>
+            <div class="subject-text">¿Cuánto pagas al inicio? Te lo explico claro</div>
+          </div>
+          <div class="email-description">
+            Rama: SÍ abrió E2a. Resuelve objeción de pago. Transparencia.
+          </div>
+          <div class="email-meta">
+            <span class="tag bifurcation">Bifurcación</span>
+            <span class="tag">Día 5</span>
+          </div>
+        </div>
+        <div class="email-card-footer">
+          <a href="emails/E3a-precios.html" class="btn btn-primary" target="_blank">Ver email</a>
+        </div>
+      </div>
+
+      <!-- E3b -->
+      <div class="email-card">
+        <div class="email-card-header e3b">
+          <div class="email-number">📧 Email 3b</div>
+          <div class="email-title">Lo que pierdes</div>
+        </div>
+        <div class="email-card-body">
+          <div class="email-subjects">
+            <span class="subject-label">Asunto único:</span>
+            <div class="subject-text">Lo que pierdes sin activar tu cuenta</div>
+          </div>
+          <div class="email-description">
+            Rama: NO abrió E2a. Urgencia social. Otros ya compraron (FOMO).
+          </div>
+          <div class="email-meta">
+            <span class="tag bifurcation">Bifurcación</span>
+            <span class="tag">Día 5</span>
+          </div>
+        </div>
+        <div class="email-card-footer">
+          <a href="emails/E3b-fomo.html" class="btn btn-primary" target="_blank">Ver email</a>
+        </div>
+      </div>
+
+      <!-- E3c -->
+      <div class="email-card">
+        <div class="email-card-header">
+          <div class="email-number">📧 Email 3c</div>
+          <div class="email-title">Prueba social</div>
+        </div>
+        <div class="email-card-body">
+          <div class="email-subjects">
+            <span class="subject-label">Asunto único:</span>
+            <div class="subject-text">Esto compraron usuarios como tú esta semana</div>
+          </div>
+          <div class="email-description">
+            Rama: SÍ abrió E2b. Social proof real. Productos específicos.
+          </div>
+          <div class="email-meta">
+            <span class="tag bifurcation">Bifurcación</span>
+            <span class="tag">Día 5</span>
+          </div>
+        </div>
+        <div class="email-card-footer">
+          <a href="emails/E3c-social.html" class="btn btn-primary" target="_blank">Ver email</a>
+        </div>
+      </div>
+
+      <!-- E3d -->
+      <div class="email-card">
+        <div class="email-card-header e3d">
+          <div class="email-number">📧 Email 3d</div>
+          <div class="email-title">Antes/Después</div>
+        </div>
+        <div class="email-card-body">
+          <div class="email-subjects">
+            <span class="subject-label">Asunto único:</span>
+            <div class="subject-text">Comprar en Amazon desde Venezuela sin tarjeta — así funciona</div>
+          </div>
+          <div class="email-description">
+            Rama: NO abrió E2b. Educación del modelo. Transformación.
+          </div>
+          <div class="email-meta">
+            <span class="tag bifurcation">Bifurcación</span>
+            <span class="tag">Día 5</span>
+          </div>
+        </div>
+        <div class="email-card-footer">
+          <a href="emails/E3d-educacion.html" class="btn btn-primary" target="_blank">Ver email</a>
+        </div>
+      </div>
+
+      <!-- E4 -->
+      <div class="email-card">
+        <div class="email-card-header">
+          <div class="email-number">📧 Email 4</div>
+          <div class="email-title">Métodos de pago</div>
+        </div>
+        <div class="email-card-body">
+          <div class="email-subjects">
+            <span class="subject-label">A:</span>
+            <div class="subject-text">Pago Móvil, Zelle o Binance — tú eliges</div>
+            <span class="subject-label">B:</span>
+            <div class="subject-text alt">¿Cuánto pagas realmente al inicio?</div>
+          </div>
+          <div class="email-description">
+            Lineal (convergido). Flexibilidad de pago. Opciones concretas.
+          </div>
+          <div class="email-meta">
+            <span class="tag">Día 8</span>
+            <span class="tag">Lineal</span>
+          </div>
+        </div>
+        <div class="email-card-footer">
+          <a href="emails/E4-pagos.html" class="btn btn-primary" target="_blank">Ver email</a>
+        </div>
+      </div>
+
+      <!-- E5 -->
+      <div class="email-card">
+        <div class="email-card-header">
+          <div class="email-number">📧 Email 5</div>
+          <div class="email-title">3 pasos simples</div>
+        </div>
+        <div class="email-card-body">
+          <div class="email-subjects">
+            <span class="subject-label">A:</span>
+            <div class="subject-text">Así compran otros venezolanos sin tarjeta</div>
+            <span class="subject-label">B:</span>
+            <div class="subject-text alt">3 pasos para tu primera compra desde Venezuela</div>
+          </div>
+          <div class="email-description">
+            Lineal. Reduce fricción. Proceso paso a paso.
+          </div>
+          <div class="email-meta">
+            <span class="tag">Día 12</span>
+            <span class="tag">Lineal</span>
+          </div>
+        </div>
+        <div class="email-card-footer">
+          <a href="emails/E5-pasos.html" class="btn btn-primary" target="_blank">Ver email</a>
+        </div>
+      </div>
+
+      <!-- E6 -->
+      <div class="email-card">
+        <div class="email-card-header">
+          <div class="email-number">📧 Email 6</div>
+          <div class="email-title">Sistema de niveles</div>
+        </div>
+        <div class="email-card-body">
+          <div class="email-subjects">
+            <span class="subject-label">A:</span>
+            <div class="subject-text">Sin perfil completo tu crédito no existe</div>
+            <span class="subject-label">B:</span>
+            <div class="subject-text alt">3 pasos para tu primera compra desde Venezuela</div>
+          </div>
+          <div class="email-description">
+            Lineal. Bronce → Plata → Oro → Platino. Aspiración.
+          </div>
+          <div class="email-meta">
+            <span class="tag">Día 16</span>
+            <span class="tag">Lineal</span>
+          </div>
+        </div>
+        <div class="email-card-footer">
+          <a href="emails/E6-niveles.html" class="btn btn-primary" target="_blank">Ver email</a>
+        </div>
+      </div>
+
+      <!-- E7 -->
+      <div class="email-card">
+        <div class="email-card-header">
+          <div class="email-number">📧 Email 7</div>
+          <div class="email-title">Propuesta de valor</div>
+        </div>
+        <div class="email-card-body">
+          <div class="email-subjects">
+            <span class="subject-label">A:</span>
+            <div class="subject-text">Pagas en cuotas y bolívares — sin tarjeta</div>
+            <span class="subject-label">B:</span>
+            <div class="subject-text alt">Más compras, más crédito — así funciona</div>
+          </div>
+          <div class="email-description">
+            Lineal. Transformación. Antes/Después.
+          </div>
+          <div class="email-meta">
+            <span class="tag">Día 21</span>
+            <span class="tag">Lineal</span>
+          </div>
+        </div>
+        <div class="email-card-footer">
+          <a href="emails/E7-valor.html" class="btn btn-primary" target="_blank">Ver email</a>
+        </div>
+      </div>
+
+      <!-- E8 -->
+      <div class="email-card">
+        <div class="email-card-header">
+          <div class="email-number">📧 Email 8</div>
+          <div class="email-title">Cierre honesto</div>
+        </div>
+        <div class="email-card-body">
+          <div class="email-subjects">
+            <span class="subject-label">A:</span>
+            <div class="subject-text">Tu crédito sigue esperándote</div>
+            <span class="subject-label">B:</span>
+            <div class="subject-text alt">¿Algo te frenó? Cuéntanos</div>
+          </div>
+          <div class="email-description">
+            Lineal (final). Puerta abierta. Sin presión. → Evergreen.
+          </div>
+          <div class="email-meta">
+            <span class="tag">Día 25</span>
+            <span class="tag">EXIT</span>
+          </div>
+        </div>
+        <div class="email-card-footer">
+          <a href="emails/E8-cierre.html" class="btn btn-primary" target="_blank">Ver email</a>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <p>MamaSan × Predictive Growth | WF-01A Bienvenida Registro Incompleto | Junio 2026</p>
+    </footer>
+  </div>
+</body>
+</html>
